@@ -53,69 +53,100 @@ img {
 header {
     /* background-color: #F8E8E8; /* Soft pink - Will be replaced by gradient */
     background: linear-gradient(to right, #f8cdda, #f5f7fa);
-    padding: 8px 20px; /* Further reduced height */
-    box-shadow: 0 1px 4px rgba(0,0,0,0.07); /* Slightly adjusted shadow for gradient */
+    padding: 15px 20px; /* Adjusted padding for new layout */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
     position: sticky;
     top: 0;
     z-index: 1000;
+    text-align: center; /* Center direct children like main-nav-links */
 }
 
-nav {
+.header-top-row {
     display: flex;
-    justify-content: space-between; /* Will keep nav links to the right */
+    justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto; /* Centers nav content */
-    position: relative; /* For absolute centering of logo */
+    max-width: 1200px; /* Or your desired max content width */
+    margin: 0 auto 15px auto; /* Centers this row and adds margin below */
+    padding-top: 60px; /* Space for MYSHOP to feel like it has 80px above it */
+    position: relative; /* For cart icon positioning */
 }
 
-nav .logo {
-    position: absolute; /* Position logo in the center */
-    left: 50%;
-    transform: translateX(-50%);
+.logo-main-title {
+    flex-grow: 1; /* Allows it to take space and center its text content */
+    text-align: center; /* Centers the h1 within its allocated space */
+    /* The h1 itself is already centered by its parent's text-align if it's display:inline-block or by margin auto if block */
 }
 
-nav .logo a {
-    font-weight: 500; /* Less bold for a cleaner look */
-    font-size: 1.3em; /* Reduced font size */
-    color: #4A4A4A; /* Slightly darker, more modern neutral */
-    letter-spacing: 0.5px; /* Optional: for a bit more refinement */
+.logo-main-title h1 {
+    font-size: 3em; /* Prominent size for MYSHOP */
+    font-weight: 700; /* Bold */
+    color: #4A4A4A;
+    margin: 0; /* Reset margin */
+    display: inline-block; /* Allows text-align center from parent to work well */
+}
+.logo-main-title a {
+    text-decoration: none;
 }
 
-nav .nav-links {
+
+.cart-icon-wrapper {
+    position: absolute; /* Position relative to header-top-row */
+    right: 20px; /* Adjust as needed from page edge */
+    top: 50%; /* Vertically center relative to header-top-row's height after padding */
+    transform: translateY(-50%);
+}
+
+.cart-icon-wrapper a, .cart-icon-wrapper.disabled {
+    font-size: 1.2em;
+    color: #4A4A4A;
+    text-decoration: none;
+    padding: 5px;
+}
+.cart-icon-wrapper #cart-icon-char {
+    font-size: 1.5em; /* Makes icon slightly larger */
+}
+.cart-icon-wrapper.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+.main-nav-links ul {
     list-style: none;
-    display: flex;
-    /* Pushed to the right by justify-content on nav, and logo is out of flow */
+    padding: 0;
+    margin: 0; /* Cleared margin from .header-top-row */
+    display: inline-flex; /* Allows centering via text-align on header */
+    gap: 30px;
 }
 
-nav .nav-links li {
-    margin-left: 20px; /* Slightly reduced margin */
-}
-
-nav .nav-links a {
+.main-nav-links a {
     font-weight: 500;
-    color: #5D5C61; /* Darker neutral for links */
+    color: #5D5C61;
+    text-decoration: none;
+    padding: 5px 0;
     transition: color 0.3s ease;
 }
 
-nav .nav-links a:hover,
-nav .nav-links a.active {
-    color: #BFA2A2; /* Muted accent color */
+.main-nav-links a:hover,
+.main-nav-links a.active { /* Assuming you might add 'active' class via JS for current page */
+    color: #BFA2A2;
+    border-bottom: 2px solid #BFA2A2;
 }
 
-/* Burger menu for mobile */
+/* Burger menu for mobile - remains largely the same but ensure it's positioned correctly */
 .burger {
-    display: none;
+    display: none; /* Hidden on desktop */
     cursor: pointer;
-    /* Ensure burger is not affected by logo's absolute positioning */
-    /* It will be pushed to the right by nav's justify-content: space-between */
-     z-index: 10; /* Ensure burger is clickable above other elements if needed */
+    position: absolute; /* Position relative to header */
+    right: 20px;
+    top: 20px; /* Adjust to vertically align with top part of header on mobile */
+    z-index: 1005; /* Above other header content */
 }
 
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: #5D5C61; /* Match new palette */
+    background-color: #5D5C61;
     margin: 5px;
     transition: all 0.3s ease;
 }
@@ -241,63 +272,76 @@ section {
 /* Checkout Page Styles */
 #checkout-page {
     max-width: 700px;
-    margin: 40px auto;
+    margin: 30px auto; /* Reduced top/bottom margin from section padding change */
     background-color: #fff;
-    padding: 30px 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    padding: 40px 50px; /* Increased padding inside the checkout box */
+    border-radius: 12px; /* Slightly more rounded */
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08); /* Softer, more diffuse shadow */
 }
 
 #checkout-page h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px; /* More space below heading */
     color: #333;
+    font-weight: 700; /* Bolder heading */
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px; /* Increased space between form groups */
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #444;
+    margin-bottom: 10px; /* More space below label */
+    font-weight: 500; /* Already good */
+    color: #4A4A4A; /* Consistent with new palette */
+    font-size: 0.95em;
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 15px; /* Increased padding inside inputs */
+    border: 1px solid #E0C8C8; /* Softer border from palette */
+    border-radius: 6px; /* Slightly more rounded inputs */
     font-size: 1em;
     color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #E9A8A9; /* Pink border on focus */
+    box-shadow: 0 0 0 3px rgba(248, 205, 218, 0.5); /* Soft pink glow */
+    outline: none;
+}
+
 
 .form-group textarea {
     resize: vertical;
-    min-height: 80px;
+    min-height: 100px; /* Slightly taller textarea */
 }
 
 .payment-placeholder {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px dashed #ddd;
+    background-color: #fdf6f7; /* Very light pink from palette */
+    padding: 20px; /* More padding */
+    border-radius: 6px;
+    border: 1px solid #E9A8A9; /* Pink border */
     text-align: center;
     font-size: 0.9em;
-    color: #777;
+    color: #5D5C61; /* Darker neutral text */
 }
 .payment-placeholder p {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 
-#place-order-btn { /* Specific if needed, or use .btn */
+#place-order-btn {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 20px; /* More space above button */
+    padding: 15px 25px; /* Taller button */
+    font-size: 1.05em; /* Slightly larger text on button */
 }
 
 
@@ -526,6 +570,26 @@ footer {
     font-size: 0.9em;
 }
 
+/* Old nav styles to remove or adapt */
+/* nav .logo, nav .nav-links might be entirely replaced by new structure */
+nav {
+    /* This class was on the old nav element, ensure it's not causing issues or remove if not used by .main-nav-links*/
+    /* display: flex; remove if not needed for .main-nav-links parent */
+    /* justify-content: space-between; remove */
+    /* align-items: center; remove */
+    /* max-width: 1200px; remove */
+    /* margin: 0 auto; remove */
+    /* position: relative; remove */
+}
+.nav-links { /* This was the old ul for nav items, now it's .main-nav-links ul */
+    /* list-style: none; remove */
+    /* display: flex; remove */
+}
+.nav-links li {
+    /* margin-left: 20px; remove */
+}
+
+
 /* Category Filters on Shop Page */
 #category-filters {
     text-align: center;
@@ -560,45 +624,73 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    nav .logo { /* Adjust logo for mobile so it doesn't overlap burger */
-        position: static; /* Back to normal flow */
+    header {
+        padding: 10px 15px; /* Reduced padding for mobile header */
+        text-align: left; /* Align burger and potentially logo if it moves */
+    }
+    .header-top-row {
+        padding-top: 10px; /* Reduced top padding for MYSHOP title */
+        margin-bottom: 10px;
+        /* For mobile, MYSHOP might not be above links, or burger takes precedence */
+        /* display: flex; by default, can make logo and cart icon align */
+        align-items: center; /* Vertically align items in top row */
+    }
+    .logo-main-title {
+        text-align: left; /* MYSHOP title to the left on mobile */
+        flex-grow: 0; /* Don't let it push cart icon too far if space is tight */
+    }
+    .logo-main-title h1 {
+        font-size: 1.8em; /* Smaller MYSHOP title for mobile */
+    }
+    .cart-icon-wrapper {
+        position: static; /* No longer absolute for simpler mobile layout */
         transform: none;
-        /* flex-grow: 1; /* Optional: allow logo to take space if needed */
-        text-align: left; /* Or center if preferred on mobile */
-        margin-right: auto; /* Pushes burger to the right */
+        margin-left: auto; /* Pushes cart icon to the right of logo */
+        padding-right: 35px; /* Space for burger if it's close */
     }
-    nav {
-        justify-content: space-between; /* Ensure burger is to the right */
+    .cart-icon-wrapper a, .cart-icon-wrapper.disabled {
+        font-size: 1em; /* Adjust cart icon text size */
     }
-    nav .nav-links {
+     .cart-icon-wrapper #cart-icon-char {
+        font-size: 1.3em;
+    }
+
+
+    .main-nav-links { /* This is the nav controlled by burger */
         position: fixed;
         right: 0;
-        top: 53px; /* Adjust based on new header height (8+8 padding + line-height of logo/burger) */
-        background-color: #fff; /* Keep mobile nav content background simple */
-        height: calc(100vh - 53px);
-        width: 60%;
+        top: 0; /* Align with very top of screen */
+        background-color: #fff;
+        height: 100vh; /* Full height */
+        width: 70%; /* Wider panel */
         flex-direction: column;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center; /* Center links vertically */
         transform: translateX(100%);
         transition: transform 0.5s ease-in-out;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 1000; /* Below burger, but above other page content */
     }
-
-    nav .nav-links.nav-active {
+    .main-nav-links ul {
+        flex-direction: column;
+        gap: 25px; /* Space between mobile nav links */
+    }
+    .main-nav-links.nav-active { /* Class to toggle visibility */
         transform: translateX(0%);
     }
 
-    nav .nav-links li {
-        margin-left: 0;
-        opacity: 0; /* For animation */
+    .main-nav-links li { /* Used for animation if navLinkFade is kept */
+        opacity: 0;
     }
 
-    .burger {
+    .burger { /* Ensure burger is visible and positioned correctly */
         display: block;
+        top: 15px; /* Fine-tune burger position */
+        right: 15px;
+        z-index: 1005; /* Ensure burger is on top of nav panel */
     }
 
-    /* Animation for nav links appearing */
+    /* Animation for nav links appearing - can be reused for .main-nav-links li */
     @keyframes navLinkFade {
         from {
             opacity: 0;

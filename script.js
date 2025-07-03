@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productGridShopContainer = document.querySelector('#product-grid-shop .grid-container');
     const categoryFiltersContainer = document.getElementById('category-filters');
 
-    const cartLink = document.getElementById('cart-link');
+    // Cart related DOM elements
     const cartPopup = document.getElementById('cart-popup');
     const closeCartBtn = document.querySelector('.close-cart-btn');
     const cartItemsContainer = document.getElementById('cart-items');
@@ -31,17 +31,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const featuredPrice = document.getElementById('featured-price');
     const featuredBtn = document.querySelector('#featured-product .add-to-cart-btn');
 
-    // Burger Menu for mobile
+    // Burger Menu for mobile - Updated to target new .main-nav-links
     const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksLi = document.querySelectorAll('.nav-links li');
+    const mainNavLinks = document.querySelector('.main-nav-links');
+    // Query for li elements within the new mainNavLinks for animation
+    const mainNavLinksLi = mainNavLinks ? mainNavLinks.querySelectorAll('ul li') : [];
 
-    if (burger) {
+
+    if (burger && mainNavLinks) { // Check if mainNavLinks exists
         burger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
+            mainNavLinks.classList.toggle('nav-active');
             burger.classList.toggle('toggle');
 
-            navLinksLi.forEach((link, index) => {
+            mainNavLinksLi.forEach((link, index) => {
                 if (link.style.animation) {
                     link.style.animation = '';
                 } else {
@@ -285,16 +287,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Event Listeners ---
-    if (cartLink) {
-        cartLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            showCartPopup();
-        });
+    // Cart icon click to show popup
+    const cartLinkIcon = document.getElementById('cart-link-icon');
+    if (cartLinkIcon) {
+        const cartIconWrapper = cartLinkIcon.closest('.cart-icon-wrapper');
+        if (!cartIconWrapper || !cartIconWrapper.classList.contains('disabled')) {
+            // For cart.html, the icon itself is a link to cart.html, so it shouldn't open the popup.
+            // For other pages, it should open the popup.
+            if (!window.location.pathname.endsWith('/cart.html')) {
+                cartLinkIcon.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Toggle cart popup only if it's not already open due to adding an item
+                    if (cartPopup && !cartPopup.classList.contains('open')) {
+                        showCartPopup();
+                    } else if (cartPopup && cartPopup.classList.contains('open')) {
+                        hideCartPopup(); // Allow toggling by clicking icon again
+                    }
+                });
+            }
+        }
     }
 
+    // Close button inside cart popup
     if (closeCartBtn) {
         closeCartBtn.addEventListener('click', hideCartPopup);
     }
+
+    // Click outside to close cart
+    document.addEventListener('click', function(event) {
+        if (cartPopup && cartPopup.classList.contains('open')) {
+            const isClickInsideCart = cartPopup.contains(event.target);
+            const cartOpenerElement = document.getElementById('cart-link-icon');
+            const isClickOnCartOpener = cartOpenerElement ? cartOpenerElement.contains(event.target) : false;
+
+            if (!isClickInsideCart && !isClickOnCartOpener) {
+                hideCartPopup();
+            }
+        }
+    });
 
     // Add to cart buttons (delegated event listener)
     document.body.addEventListener('click', (e) => {

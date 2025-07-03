@@ -8,21 +8,27 @@
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">
+        <div class="header-top-row">
+            <div class="logo-main-title">
                 <a href="index.html"><h1>MYSHOP</h1></a>
             </div>
-            <ul class="nav-links">
+            <!-- No cart icon needed on success page, or a non-functional one -->
+             <div class="cart-icon-wrapper disabled">
+                <span id="cart-icon-char">🛒</span>
+                (0)
+            </div>
+        </div>
+        <nav class="main-nav-links">
+            <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <!-- No cart link needed here, or a disabled one -->
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
         </nav>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </header>
 
     <main>
