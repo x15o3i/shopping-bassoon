@@ -67,7 +67,7 @@ header {
     align-items: center;
     max-width: 1200px; /* Or your desired max content width */
     margin: 0 auto 15px auto; /* Centers this row and adds margin below */
-    padding-top: 60px; /* Space for MYSHOP to feel like it has 80px above it */
+    padding-top: 2px; /* Space for MYSHOP to feel like it has 80px above it */
     position: relative; /* For cart icon positioning */
 }
 
