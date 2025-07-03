@@ -49,9 +49,9 @@ img {
 
 /* Header & Navigation */
 header {
-    background-color: #fff;
-    padding: 15px 30px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background-color: #F8E8E8; /* Soft pink */
+    padding: 10px 20px; /* Reduced height */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -59,47 +59,59 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Will keep nav links to the right */
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centers nav content */
+    position: relative; /* For absolute centering of logo */
+}
+
+nav .logo {
+    position: absolute; /* Position logo in the center */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 nav .logo a {
     font-weight: bold;
-    font-size: 1.5em;
-    color: #333;
+    font-size: 1.4em; /* Slightly reduced */
+    color: #5D5C61; /* Darker neutral */
 }
 
 nav .nav-links {
     list-style: none;
     display: flex;
+    /* Pushed to the right by justify-content on nav, and logo is out of flow */
 }
 
 nav .nav-links li {
-    margin-left: 25px;
+    margin-left: 20px; /* Slightly reduced margin */
 }
 
 nav .nav-links a {
     font-weight: 500;
+    color: #5D5C61; /* Darker neutral for links */
     transition: color 0.3s ease;
 }
 
 nav .nav-links a:hover,
 nav .nav-links a.active {
-    color: #007bff; /* A subtle accent color */
+    color: #BFA2A2; /* Muted accent color */
 }
 
 /* Burger menu for mobile */
 .burger {
     display: none;
     cursor: pointer;
+    /* Ensure burger is not affected by logo's absolute positioning */
+    /* It will be pushed to the right by nav's justify-content: space-between */
+     z-index: 10; /* Ensure burger is clickable above other elements if needed */
 }
 
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: #333;
+    background-color: #5D5C61; /* Match new palette */
     margin: 5px;
     transition: all 0.3s ease;
 }
@@ -196,6 +208,129 @@ section {
     transform: translateY(0);
 }
 
+/* General Button Style (if not already comprehensive) */
+.btn {
+    display: inline-block;
+    background-color: #5D5C61; /* Darker neutral from new palette */
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none; /* For <a> tags styled as buttons */
+}
+
+.btn:hover {
+    background-color: #4B4A4D; /* Slightly darker shade for hover */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+
+/* Checkout Page Styles */
+#checkout-page {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+#checkout-page h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.payment-placeholder {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px dashed #ddd;
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+}
+.payment-placeholder p {
+    margin-bottom: 5px;
+}
+
+
+#place-order-btn { /* Specific if needed, or use .btn */
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* Order Status Pages (Success/Failure) */
+#order-status-page {
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#order-status-page h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#order-status-page p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+#order-status-page .btn { /* Uses the general .btn style */
+    margin-top: 10px;
+}
+
+.order-success h2 {
+    color: #28a745; /* Green for success */
+}
+
+.order-failure h2 {
+    color: #dc3545; /* Red for failure */
+}
+
 
 /* Cart Popup */
 .cart-popup {
@@ -240,8 +375,10 @@ section {
 
 #cart-items {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* Will allow scrolling if content overflows */
+    max-height: 60vh; /* Adjust as needed, e.g., enough for 4-5 items */
     margin-bottom: 15px;
+    padding-right: 10px; /* Add some padding if scrollbar appears */
 }
 
 #cart-items .cart-item {
@@ -378,20 +515,56 @@ section {
 /* Footer */
 footer {
     text-align: center;
-    padding: 25px;
-    background-color: #333;
-    color: #f9f9f9;
+    padding: 15px 20px; /* Reduced height */
+    background-color: #5D5C61; /* Darker neutral, consistent with new palette */
+    color: #F8E8E8; /* Soft pink text for contrast */
     margin-top: auto; /* Pushes footer to bottom */
+    font-size: 0.9em;
 }
+
+/* Category Filters on Shop Page */
+#category-filters {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#category-filters button {
+    background-color: #fff;
+    color: #5D5C61;
+    border: 1px solid #BFA2A2;
+    padding: 10px 18px;
+    font-size: 0.95em;
+    border-radius: 20px; /* Pill shape */
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#category-filters button:hover,
+#category-filters button.active {
+    background-color: #BFA2A2;
+    color: #fff;
+    border-color: #BFA2A2;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    nav .logo { /* Adjust logo for mobile so it doesn't overlap burger */
+        position: static; /* Back to normal flow */
+        transform: none;
+        /* flex-grow: 1; /* Optional: allow logo to take space if needed */
+        text-align: left; /* Or center if preferred on mobile */
+    }
+    nav {
+        /* justify-content: space-between; /* Already set, ensures burger is to the right */
+    }
     nav .nav-links {
         position: fixed;
         right: 0;
-        top: 70px; /* Adjust based on header height */
-        background-color: #fff;
-        height: calc(100vh - 70px);
+        top: 57px; /* Adjust based on new header height (10+10 padding + line-height) */
+        background-color: #fff; /* Keep mobile nav content background simple */
+        height: calc(100vh - 57px);
         width: 60%;
         flex-direction: column;
         align-items: center;

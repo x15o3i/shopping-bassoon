@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - Minimalist Shop</title>
+    <title>Order Failed - Minimalist Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,18 +26,11 @@
     </header>
 
     <main>
-        <section id="shop-page-content">
-            <h2>Shop Our Products</h2>
-
-            <div id="category-filters">
-                <!-- Category filter buttons will be injected here by JavaScript -->
-            </div>
-
-            <div id="product-grid-shop">
-                <div class="grid-container">
-                    <!-- Products will be injected here by JavaScript -->
-                </div>
-            </div>
+        <section id="order-status-page" class="order-failure">
+            <h2>❌ Something went wrong with your order.</h2>
+            <p>We apologize for the inconvenience. Please try placing your order again.</p>
+            <p>If the problem persists, please contact our support team.</p>
+            <a href="checkout.html" class="btn">Try Again</a>
         </section>
     </main>
 
@@ -45,7 +38,7 @@
         <p>&copy; 2023 Minimalist Shop</p>
     </footer>
 
-    <!-- Cart Popup (same as index.html) -->
+    <!-- Cart Popup (can be included for consistency) -->
     <div id="cart-popup" class="cart-popup">
         <div class="cart-popup-content">
             <span class="close-cart-btn">&times;</span>
@@ -54,7 +47,7 @@
                 <p>Your cart is empty.</p>
             </div>
             <p>Total: $<span id="cart-total">0.00</span></p>
-            <button id="checkout-btn">Checkout</button>
+            <button id="checkout-btn-popup">View Full Cart</button>
         </div>
     </div>
 
