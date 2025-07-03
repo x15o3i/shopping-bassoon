@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
 /* General Reset & Base Styles */
 * {
     margin: 0;
@@ -6,10 +8,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Keeping this for overall page, header has gradient */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -49,9 +51,10 @@ img {
 
 /* Header & Navigation */
 header {
-    background-color: #F8E8E8; /* Soft pink */
-    padding: 10px 20px; /* Reduced height */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    /* background-color: #F8E8E8; /* Soft pink - Will be replaced by gradient */
+    background: linear-gradient(to right, #f8cdda, #f5f7fa);
+    padding: 8px 20px; /* Further reduced height */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07); /* Slightly adjusted shadow for gradient */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -73,9 +76,10 @@ nav .logo {
 }
 
 nav .logo a {
-    font-weight: bold;
-    font-size: 1.4em; /* Slightly reduced */
-    color: #5D5C61; /* Darker neutral */
+    font-weight: 500; /* Less bold for a cleaner look */
+    font-size: 1.3em; /* Reduced font size */
+    color: #4A4A4A; /* Slightly darker, more modern neutral */
+    letter-spacing: 0.5px; /* Optional: for a bit more refinement */
 }
 
 nav .nav-links {
@@ -118,15 +122,15 @@ nav .nav-links a.active {
 
 /* Sections */
 section {
-    padding: 40px 0;
+    padding: 25px 20px; /* Reduced padding for tighter layout, added horizontal for content */
     text-align: center;
 }
 
 /* Featured Product */
 #featured-product {
     background-color: #fff;
-    padding: 40px 20px;
-    margin-bottom: 30px;
+    padding: 30px 20px; /* Reduced padding */
+    margin-bottom: 25px; /* Reduced margin */
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -148,22 +152,22 @@ section {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    gap: 20px; /* Slightly reduced gap */
     margin-top: 20px;
 }
 
 .product-card {
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 10px; /* Rounded corners */
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Softer shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-4px) scale(1.02); /* Lift and slight scale */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* Enhanced shadow on hover */
 }
 
 .product-card img {
@@ -540,11 +544,17 @@ footer {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#category-filters button:hover,
+#category-filters button:hover {
+    background-color: #E0C8C8; /* Lighter pink for hover, distinct from active */
+    color: #4A4A4A; /* Darker text on hover for readability */
+    border-color: #D3BABA;
+}
+
 #category-filters button.active {
-    background-color: #BFA2A2;
-    color: #fff;
-    border-color: #BFA2A2;
+    background-color: #E9A8A9; /* Pink background for active */
+    color: #fff; /* White text for active */
+    border-color: #E9A8A9; /* Border matches background */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* Subtle shadow for active */
 }
 
 
@@ -555,16 +565,17 @@ footer {
         transform: none;
         /* flex-grow: 1; /* Optional: allow logo to take space if needed */
         text-align: left; /* Or center if preferred on mobile */
+        margin-right: auto; /* Pushes burger to the right */
     }
     nav {
-        /* justify-content: space-between; /* Already set, ensures burger is to the right */
+        justify-content: space-between; /* Ensure burger is to the right */
     }
     nav .nav-links {
         position: fixed;
         right: 0;
-        top: 57px; /* Adjust based on new header height (10+10 padding + line-height) */
+        top: 53px; /* Adjust based on new header height (8+8 padding + line-height of logo/burger) */
         background-color: #fff; /* Keep mobile nav content background simple */
-        height: calc(100vh - 57px);
+        height: calc(100vh - 53px);
         width: 60%;
         flex-direction: column;
         align-items: center;

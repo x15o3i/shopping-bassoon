@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = [
-        { id: 1, name: 'Minimalist Tee', price: 25.00, image: 'placeholder.jpg', category: 'Clothing' },
-        { id: 2, name: 'Sleek Mug', price: 15.50, image: 'placeholder.jpg', category: 'Home Goods' },
-        { id: 3, name: 'Modern Notebook', price: 12.00, image: 'placeholder.jpg', category: 'Books' }, // Changed category
-        { id: 4, name: 'Classic Watch', price: 120.00, image: 'placeholder.jpg', category: 'Accessories' },
-        { id: 5, name: 'Canvas Tote Bag', price: 30.00, image: 'placeholder.jpg', category: 'Accessories' },
-        { id: 6, name: 'Steel Water Bottle', price: 22.75, image: 'placeholder.jpg', category: 'Home Goods' },
-        { id: 7, name: 'Wireless Headphones', price: 75.00, image: 'placeholder.jpg', category: 'Electronics' },
-        { id: 8, name: 'Leather Wallet', price: 45.00, image: 'placeholder.jpg', category: 'Accessories' },
-        { id: 9, name: 'Graphic Novel', price: 18.00, image: 'placeholder.jpg', category: 'Books' },
-        { id: 10, name: 'Hoodie Allen', price: 55.00, image: 'placeholder.jpg', category: 'Clothing' },
-        { id: 11, name: 'Smart Speaker', price: 90.00, image: 'placeholder.jpg', category: 'Electronics' },
+        { id: 1, name: 'Minimalist Tee', price: 25.00, image: 'https://picsum.photos/seed/1/300/200', category: 'Clothing' },
+        { id: 2, name: 'Sleek Mug', price: 15.50, image: 'https://picsum.photos/seed/2/300/200', category: 'Home Goods' },
+        { id: 3, name: 'Modern Notebook', price: 12.00, image: 'https://picsum.photos/seed/3/300/200', category: 'Books' },
+        { id: 4, name: 'Classic Watch', price: 120.00, image: 'https://picsum.photos/seed/4/300/200', category: 'Accessories' },
+        { id: 5, name: 'Canvas Tote Bag', price: 30.00, image: 'https://picsum.photos/seed/5/300/200', category: 'Accessories' },
+        { id: 6, name: 'Steel Water Bottle', price: 22.75, image: 'https://picsum.photos/seed/6/300/200', category: 'Home Goods' },
+        { id: 7, name: 'Wireless Headphones', price: 75.00, image: 'https://picsum.photos/seed/7/300/200', category: 'Electronics' },
+        { id: 8, name: 'Leather Wallet', price: 45.00, image: 'https://picsum.photos/seed/8/300/200', category: 'Accessories' },
+        { id: 9, name: 'Graphic Novel', price: 18.00, image: 'https://picsum.photos/seed/9/300/200', category: 'Books' },
+        { id: 10, name: 'Hoodie Allen', price: 55.00, image: 'https://picsum.photos/seed/10/300/200', category: 'Clothing' },
+        { id: 11, name: 'Smart Speaker', price: 90.00, image: 'https://picsum.photos/seed/11/300/200', category: 'Electronics' },
     ];
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
